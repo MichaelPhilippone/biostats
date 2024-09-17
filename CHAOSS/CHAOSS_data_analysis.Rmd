@@ -1,0 +1,56 @@
+<!-- R Commander Markdown Template -->
+
+Practicing R with CHAOSS data set 
+=======================
+
+### PHILIPM3
+
+### `r as.character(Sys.Date())`
+
+```{r echo=FALSE}
+# include this code chunk as-is to set options
+knitr::opts_chunk$set(comment=NA, prompt=TRUE, out.width=750, fig.height=8, fig.width=8)
+library(Rcmdr)
+library(car)
+library(RcmdrMisc)
+```
+
+```{r}
+CHAOSS <- 
+  readXL("C:/Users/philipm3/OneDrive - Cleveland Clinic/Academics/_Biostatistics/Handedness in Surgery Study data.xlsx",
+   rownames=FALSE, header=TRUE, na="", sheet="Sheet1", stringsAsFactors=TRUE)
+```
+
+```{r}
+str(CHAOSS)
+```
+
+
+```{r}
+Righthanders <- subset(CHAOSS, subset=Hand=="right")
+```
+
+```{r}
+str(Righthanders)
+```
+
+```{r}
+Righthanders <- within(Righthanders, {
+  Quick <- Recode(Time, '0:5="1"; 5.01:1000="0"; else="NA"', as.factor=TRUE,
+   to.value="=", interval=":", separator=";")
+})
+```
+
+```{r}
+CHAOSS <- within(CHAOSS, {
+Quick <- Recode(Time, '0:5="1"; 5.01:1000="0"; else="NA"', as.factor=TRUE,
+to.value="=", interval=":", separator=";")
+})
+```
+
+
+```{r}
+str(CHAOSS)
+```
+
+

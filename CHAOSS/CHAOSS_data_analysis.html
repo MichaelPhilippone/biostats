@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Practicing R with CHAOSS data set</title>
+<style type="text/css">
+/**
+ * Prism.s theme ported from highlight.js's xcode style
+ */
+pre code {
+  padding: 1em;
+}
+.token.comment {
+  color: #007400;
+}
+.token.punctuation {
+  color: #999;
+}
+.token.tag,
+.token.selector {
+  color: #aa0d91;
+}
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: #1c00cf;
+}
+.token.property,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+  color: #c41a16;
+}
+.token.inserted {
+  background-color: #ccffd8;
+}
+.token.deleted {
+  background-color: #ffebe9;
+}
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #9a6e3a;
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #836c28;
+}
+.token.function,
+.token.class-name {
+  color: #DD4A68;
+}
+.token.regex,
+.token.important,
+.token.variable {
+  color: #5c2699;
+}
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+</style>
+<style type="text/css">
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+body, .footnotes, code { font-size: .9em; }
+li li { font-size: .95em; }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+pre, img { max-width: 100%; }
+pre, pre:hover {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+pre code {
+  display: block;
+  overflow-x: auto;
+}
+code { font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace; }
+:not(pre) > code, code[class] { background-color: #F8F8F8; }
+code.language-undefined, pre > code:not([class]) {
+  background-color: inherit;
+  border: 1px solid #eee;
+}
+table {
+  margin: auto;
+  border-top: 1px solid #666;
+}
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+thead, tfoot, tr:nth-child(even) { background: #eee; }
+blockquote {
+  color: #666;
+  margin: 0;
+  padding-left: 1em;
+  border-left: 0.5em solid #eee;
+}
+hr, .footnotes::before { border: 1px dashed #ddd; }
+.frontmatter { text-align: center; }
+#TOC .numbered li { list-style: none; }
+#TOC .numbered { padding-left: 0; }
+#TOC .numbered ul { padding-left: 1em; }
+table, .body h2 { border-bottom: 1px solid #666; }
+.body .appendix, .appendix ~ h2 { border-bottom-style: dashed; }
+.footnote-ref a::before { content: "["; }
+.footnote-ref a::after { content: "]"; }
+section.footnotes::before {
+  content: "";
+  display: block;
+  max-width: 20em;
+}
+
+@media print {
+  body {
+    font-size: 12pt;
+    max-width: 100%;
+  }
+  tr, img { page-break-inside: avoid; }
+}
+@media only screen and (min-width: 992px) {
+  pre { white-space: pre; }
+}
+</style>
+</head>
+<body>
+<div class="frontmatter">
+<div class="title"><h1>Practicing R with CHAOSS data set</h1></div>
+<div class="author"><h2></h2></div>
+<div class="date"><h3></h3></div>
+</div>
+<div class="body">
+<div id="TOC">
+<ul>
+<li><a href="#practicing-r-with-chaoss-data-set">Practicing R with CHAOSS data set</a>
+<ul>
+<li><a href="#philipm3">PHILIPM3</a></li>
+<li><a href="#2024-09-17">2024-09-17</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- R Commander Markdown Template -->
+<h1 id="practicing-r-with-chaoss-data-set">Practicing R with CHAOSS data set</h1>
+<h3 id="philipm3">PHILIPM3</h3>
+<h3 id="2024-09-17">2024-09-17</h3>
+<pre><code class="language-r">&gt; CHAOSS &lt;- 
++   readXL(&quot;C:/Users/philipm3/OneDrive - Cleveland Clinic/Academics/_Biostatistics/Handedness in Surgery Study data.xlsx&quot;,
++    rownames=FALSE, header=TRUE, na=&quot;&quot;, sheet=&quot;Sheet1&quot;, stringsAsFactors=TRUE)
+</code></pre>
+<pre><code class="language-r">&gt; str(CHAOSS)
+</code></pre>
+<pre><code>'data.frame':	223 obs. of  7 variables:
+ $ Surgeon   : num  1 2 3 4 5 6 7 8 9 10 ...
+ $ Hand      : Factor w/ 2 levels &quot;left&quot;,&quot;right&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+ $ Gender    : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 1 1 2 1 1 1 2 1 1 1 ...
+ $ Ailment   : Factor w/ 13 levels &quot;bad plumbing&quot;,..: 7 10 3 4 13 8 10 13 12 1 ...
+ $ Experience: Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 2 2 2 1 2 2 2 1 2 2 ...
+ $ Outcome   : Factor w/ 2 levels &quot;failure&quot;,&quot;success&quot;: 2 2 2 1 1 1 2 2 2 2 ...
+ $ Time      : num  8 11 6 23 15 11 6 3 14 16 ...
+</code></pre>
+<pre><code class="language-r">&gt; Righthanders &lt;- subset(CHAOSS, subset=Hand==&quot;right&quot;)
+</code></pre>
+<pre><code class="language-r">&gt; str(Righthanders)
+</code></pre>
+<pre><code>'data.frame':	186 obs. of  7 variables:
+ $ Surgeon   : num  1 2 3 4 5 6 7 8 9 10 ...
+ $ Hand      : Factor w/ 2 levels &quot;left&quot;,&quot;right&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+ $ Gender    : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 1 1 2 1 1 1 2 1 1 1 ...
+ $ Ailment   : Factor w/ 13 levels &quot;bad plumbing&quot;,..: 7 10 3 4 13 8 10 13 12 1 ...
+ $ Experience: Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 2 2 2 1 2 2 2 1 2 2 ...
+ $ Outcome   : Factor w/ 2 levels &quot;failure&quot;,&quot;success&quot;: 2 2 2 1 1 1 2 2 2 2 ...
+ $ Time      : num  8 11 6 23 15 11 6 3 14 16 ...
+</code></pre>
+<pre><code class="language-r">&gt; Righthanders &lt;- within(Righthanders, {
++   Quick &lt;- Recode(Time, '0:5=&quot;1&quot;; 5.01:1000=&quot;0&quot;; else=&quot;NA&quot;', as.factor=TRUE,
++    to.value=&quot;=&quot;, interval=&quot;:&quot;, separator=&quot;;&quot;)
++ })
+</code></pre>
+<pre><code class="language-r">&gt; CHAOSS &lt;- within(CHAOSS, {
++ Quick &lt;- Recode(Time, '0:5=&quot;1&quot;; 5.01:1000=&quot;0&quot;; else=&quot;NA&quot;', as.factor=TRUE,
++ to.value=&quot;=&quot;, interval=&quot;:&quot;, separator=&quot;;&quot;)
++ })
+</code></pre>
+<pre><code class="language-r">&gt; str(CHAOSS)
+</code></pre>
+<pre><code>'data.frame':	223 obs. of  8 variables:
+ $ Surgeon   : num  1 2 3 4 5 6 7 8 9 10 ...
+ $ Hand      : Factor w/ 2 levels &quot;left&quot;,&quot;right&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+ $ Gender    : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 1 1 2 1 1 1 2 1 1 1 ...
+ $ Ailment   : Factor w/ 13 levels &quot;bad plumbing&quot;,..: 7 10 3 4 13 8 10 13 12 1 ...
+ $ Experience: Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 2 2 2 1 2 2 2 1 2 2 ...
+ $ Outcome   : Factor w/ 2 levels &quot;failure&quot;,&quot;success&quot;: 2 2 2 1 1 1 2 2 2 2 ...
+ $ Time      : num  8 11 6 23 15 11 6 3 14 16 ...
+ $ Quick     : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 1 1 1 1 1 1 1 2 1 1 ...
+</code></pre>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+</body>
+</html>
