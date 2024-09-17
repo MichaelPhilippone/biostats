@@ -17,5 +17,4 @@ CHAOSS <- within(CHAOSS, {
    to.value="=", interval=":", separator=";")
 })
 str(CHAOSS)
-editDataset(CHAOSS)
 
