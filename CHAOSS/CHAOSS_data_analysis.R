@@ -1,9 +1,9 @@
 # Working Directory
-setwd("C:/Users/philipm3/OneDrive - Cleveland Clinic/Academics/_Biostatistics")
+setwd("C:/Users/PHILIPM3/OneDrive - Cleveland Clinic/GitHub/biostats/CHAOSS")
 
 # Load the XL file
 CHAOSS <- 
-  readXL("C:/Users/philipm3/OneDrive - Cleveland Clinic/Academics/_Biostatistics/Handedness in Surgery Study data.xlsx",
+  readXL("C:/Users/PHILIPM3/OneDrive - Cleveland Clinic/GitHub/biostats/CHAOSS/Handedness in Surgery Study data.xlsx",
    rownames=FALSE, header=TRUE, na="", sheet="Sheet1", stringsAsFactors=TRUE)
 str(CHAOSS)
 
@@ -17,4 +17,5 @@ CHAOSS <- within(CHAOSS, {
    to.value="=", interval=":", separator=";")
 })
 str(CHAOSS)
+
 

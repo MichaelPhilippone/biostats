@@ -1,6 +1,6 @@
 <!-- R Commander Markdown Template -->
 
-Practicing R with CHAOSS data set 
+Replace with Main Title
 =======================
 
 ### PHILIPM3
@@ -16,10 +16,26 @@ library(RcmdrMisc)
 ```
 
 ```{r}
-CHAOSS <- 
-  readXL("C:/Users/philipm3/OneDrive - Cleveland Clinic/Academics/_Biostatistics/Handedness in Surgery Study data.xlsx",
-   rownames=FALSE, header=TRUE, na="", sheet="Sheet1", stringsAsFactors=TRUE)
+setwd("C:/Users/PHILIPM3/OneDrive - Cleveland Clinic/GitHub/biostats/CHAOSS")
 ```
+
+
+```{r}
+setwd("C:/Users/philipm3/OneDrive - Cleveland Clinic/Academics/_Biostatistics")
+```
+
+
+```{r}
+setwd("C:/Users/PHILIPM3/OneDrive - Cleveland Clinic/GitHub/biostats/CHAOSS")
+```
+
+
+```{r}
+CHAOSS <-
+readXL("C:/Users/PHILIPM3/OneDrive - Cleveland Clinic/GitHub/biostats/CHAOSS/Handedness in Surgery Study data.xlsx",
+rownames=FALSE, header=TRUE, na="", sheet="Sheet1", stringsAsFactors=TRUE)
+```
+
 
 ```{r}
 str(CHAOSS)
@@ -30,16 +46,11 @@ str(CHAOSS)
 Righthanders <- subset(CHAOSS, subset=Hand=="right")
 ```
 
+
 ```{r}
 str(Righthanders)
 ```
 
-```{r}
-Righthanders <- within(Righthanders, {
-  Quick <- Recode(Time, '0:5="1"; 5.01:1000="0"; else="NA"', as.factor=TRUE,
-   to.value="=", interval=":", separator=";")
-})
-```
 
 ```{r}
 CHAOSS <- within(CHAOSS, {
@@ -52,5 +63,4 @@ to.value="=", interval=":", separator=";")
 ```{r}
 str(CHAOSS)
 ```
-
 
